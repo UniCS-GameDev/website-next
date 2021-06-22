@@ -1,0 +1,22 @@
+.teamMemberList {
+    gap: 1em;
+    list-style: none;
+}
+
+.teamMember {
+    background-color: var(--theme-bg-accent);
+    height: 10em;
+    width: 10em;
+    text-align: center;
+}
+
+.formInput {
+    min-width: 100%;
+}
+
+.formSubmit {
+    display: block;
+    max-width: 4em;
+    margin-left: auto;
+    margin-right: auto;
+}

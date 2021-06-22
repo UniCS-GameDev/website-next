@@ -1,0 +1,21 @@
+.workshopList {
+    gap: 1em;
+    list-style: none;
+}
+
+.workshop {
+    width: 20em;
+    height: 20em;
+    background-color: blue;
+}
+
+.tutorialList {
+    gap: 1em;
+    list-style: none;
+}
+
+.tutorial {
+    width: 20em;
+    height: 20em;
+    background-color: blue;
+}

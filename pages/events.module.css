@@ -1,0 +1,13 @@
+.eventTable {
+    display: grid;
+    grid-template-rows: auto;
+    grid-template-columns: auto auto;
+    grid-auto-flow: row;
+    grid-auto-columns: auto auto;
+    gap: 1em;
+    justify-content: center;
+}
+
+.eventList {
+    list-style: none;
+}

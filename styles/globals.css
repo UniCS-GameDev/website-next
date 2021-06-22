@@ -1,7 +1,7 @@
-html,
-body {
+html, body, #__next, #__themed_padding {
   padding: 0;
   margin: 0;
+  height: 100%;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
@@ -13,4 +13,62 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.2;
+  text-align: center;
+}
+
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid;
+  border-color: inherit;
+}
+
+pre {
+  overflow-x: auto;
+}
+
+.header {
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+
+.navbar {
+  overflow: hidden;
+  top: 0;
+  width: 100%;
+  padding-left: 1em;
+  padding-right: 1em;
+  display: flex;
+  justify-content: space-between;
+}
+
+.footer {
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+
+.container {
+  max-width: 60em;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1em;
+}
+
+.row {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-break {
+  word-wrap: break-word;
 }
