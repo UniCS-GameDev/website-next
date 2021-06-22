@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "highlight.js": "^11.0.1",
     "micromark": "^2.11.4",
     "next": "11.0.0",
     "react": "17.0.2",

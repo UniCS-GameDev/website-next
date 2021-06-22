@@ -1,3 +1,14 @@
+.video {
+    max-width: 640;
+}
+
 .tableOfContents {
+    max-width: 50em;
+    margin-left: auto;
+    margin-right: auto;
     list-style: none;
+}
+
+.infopoint {
+    size: 2em;
 }

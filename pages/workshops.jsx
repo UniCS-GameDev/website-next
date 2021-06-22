@@ -1,9 +1,12 @@
+import Image from 'next/image'
 import Link from 'next/link'
 
 import { getAllWorkshops } from '../lib/workshops'
 import Layout from '../components/layout'
 
 import styles from './workshops.module.css'
+
+const fallbackWorkshopThumbnail = 'https://cdn.pixabay.com/photo/2018/05/19/01/23/online-3412498_960_720.jpg';
 
 export async function getStaticProps() {
     return {
@@ -21,17 +24,26 @@ export default function Workshops({ workshops }) {
                 <p>
                     The UniCS GameDev team works on several tutorials that are run synchronously and asynchronously for students with the purpose of teaching them more about the different aspects of game development.
                 </p>
+                <hr />
             </div>
-            <hr />
             <div className="container">
                 <ul className={`row ${styles.workshopList}`}>
                     {workshops.map(({ slug, path, details, tutorialCount }, i) => {
                         return (
-                            <Link href={`/workshops/${slug}`}>
-                                <li key={i} className={styles.workshop}>
-                                    <span>{slug}</span>
-                                </li>
-                            </Link>
+                            <li key={i} className={styles.workshop}>
+                                <Link href={`/workshops/${slug}`} passHref>
+                                    <div className={`container ${styles.card}`}>
+                                        <div className={styles.cardThumbnail}>
+                                            <Image src={details.thumbnail || fallbackWorkshopThumbnail} height="320" width="320" objectFit="cover" alt={slug} />
+                                        </div>
+                                        <div className={`text-center ${styles.cardContent}`}>
+                                            <span>{details.title}</span><br />
+                                            <span>{details.intro}</span><br />
+                                            <span>{tutorialCount} tutorials</span>
+                                        </div>
+                                    </div>
+                                </Link>
+                            </li>
                         );
                     })}
                 </ul>

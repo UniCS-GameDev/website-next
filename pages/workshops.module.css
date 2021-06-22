@@ -1,12 +1,29 @@
+.card {
+    width: 20em;
+    height: 20em;
+    min-width: 100%;
+    min-height: 100%;
+    padding: 0;
+}
+
+.cardThumbnail {
+    min-width: 100%;
+    position: absolute;
+}
+
+.cardContent {
+    min-height: 100%;
+    padding: 1em;
+    position: relative;
+}
+
 .workshopList {
     gap: 1em;
     list-style: none;
 }
 
 .workshop {
-    width: 20em;
-    height: 20em;
-    background-color: blue;
+    background-color: var(--theme-bg-accent);
 }
 
 .tutorialList {
@@ -15,7 +32,5 @@
 }
 
 .tutorial {
-    width: 20em;
-    height: 20em;
-    background-color: blue;
+    background-color: var(--theme-bg-accent);
 }
