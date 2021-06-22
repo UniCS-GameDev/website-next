@@ -85,7 +85,7 @@ export default function Tutorial({ slug, created, edited, details }) {
             </div>
             <hr />
             <div className="container">
-                {details.contents.map(({ type, ...props }, i) => {
+                {details.contents.map(({ type, ...props }) => {
                     return {
                         'heading': Heading,
                         'infopoint': Infopoint,
