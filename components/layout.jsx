@@ -1,23 +1,21 @@
 import Head from 'next/head'
 import Link from 'next/link'
 
-import HeartFilled from '../components/icons/heart'
-import Instagram from '../components/icons/instagram'
-import Facebook from '../components/icons/facebook'
-import Gitlab from '../components/icons/gitlab'
+import { Heart, Instagram, Facebook, Gitlab } from '../components/icons'
 
 export default function Layout({ title, description, children }) {
     function navResponsive() {
-        if (typeof window === 'object'){
+        if (typeof window === 'object') {
             var x = document.getElementById("navbar");
-            console.log(x)
+
             if (x.className === "navbar") {
-            x.className += " responsive";
+                x.className += " responsive";
             } else {
-            x.className = "navbar";
+                x.className = "navbar";
             }
         }
     }
+
     return (
         <div id="__themed_padding">
             <Head>
@@ -30,12 +28,12 @@ export default function Layout({ title, description, children }) {
                     <nav className="navbar" id="navbar">
                         <div>
                             <Link href="/">Index</Link>
-                            <Link href="/workshops">Tutorials</Link>
+                            <Link href="/workshops">Workshops</Link>
                             <Link href="/events">Events</Link>
-                            <Link href="/gallery">Gallery</Link>
                             <Link href="/#about">About</Link>
+                            <Link href="/#gallery">Gallery</Link>
                             <Link href="/#contact">Contact</Link>
-                            <a href="javascript:void(0);" className="icon" onClick={navResponsive}>
+                            <a className="icon" onClick={navResponsive}>
                             &#9776;
                             </a>
                         </div>
@@ -50,11 +48,11 @@ export default function Layout({ title, description, children }) {
                 <hr />
                 <footer className="footer">
                     <div className="text-center">
-                        <a href="https://www.instagram.com/unics_gamedev/"><Instagram /></a>
-                        <a href="https://www.facebook.com/UniCsGameDev/"><Facebook /></a>
-                        <a href="https://gitlab.cs.man.ac.uk/unics-game-development/"><Gitlab /></a>
+                        <a className="footerIcon" href="https://www.instagram.com/unics_gamedev/"><Instagram style={{fontSize: '2em'}} /></a>
+                        <a className="footerIcon" href="https://www.facebook.com/UniCsGameDev/"><Facebook style={{fontSize: '2em'}} /></a>
+                        <a className="footerIcon" href="https://gitlab.cs.man.ac.uk/unics-game-development/"><Gitlab style={{fontSize: '2em'}} /></a>
                         <br />
-                        <span className="d-none d-lg-block d-xl-block">Coded with <HeartFilled /> by GameDev! | UniCS GameDev © 2020</span>
+                        <span className="d-none d-lg-block d-xl-block">Coded with <Heart /> by GameDev! | UniCS GameDev © 2020</span>
                         <span className="d-lg-none d-xl-none">UniCS GameDev © 2020</span>
                     </div>
                 </footer>

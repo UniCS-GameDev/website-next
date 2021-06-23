@@ -1,11 +1,8 @@
 import Link from 'next/link'
 
 import { getHistoricalEvents, getUpcomingEvents } from '../lib/events'
+import { Calendar, Clock, Facebook, Location } from '../components/icons'
 import Layout from '../components/layout'
-import Calendar from '../components/icons/calendar'
-import Clock from '../components/icons/clock'
-import Facebook from '../components/icons/facebook'
-import Location from '../components/icons/location'
 
 import styles from './events.module.css'
 

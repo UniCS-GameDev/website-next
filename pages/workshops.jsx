@@ -28,7 +28,7 @@ export default function Workshops({ workshops }) {
             </div>
             <div className="container">
                 <ul className={`row ${styles.workshopList}`}>
-                    {workshops.map(({ slug, path, details, tutorialCount }, i) => {
+                    {workshops.map(({ slug, details, tutorialCount }, i) => {
                         return (
                             <li key={i} className={styles.workshop}>
                                 <Link href={`/workshops/${slug}`} passHref>

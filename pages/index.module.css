@@ -10,6 +10,16 @@
     text-align: center;
 }
 
+.gallery {
+    gap: 1em;
+    list-style: none;
+}
+
+.galleryPhoto {
+    max-width: 512px;
+    max-height: 288px;
+}
+
 .formInput {
     min-width: 100%;
 }

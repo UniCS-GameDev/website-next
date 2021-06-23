@@ -1,26 +1,27 @@
 import Image from 'next/image'
+import Link from 'next/link'
 
-import { memberPhotoSize, getAllMembers } from '../lib/members'
-import { galleryPhotoSize, getGalleryPhotos } from '../lib/gallery'
+import { defaultMemberPhoto, memberPhotoSize, getAllMembers } from '../lib/members'
+import { galleryPhotoSize, getAllGalleryPhotos } from '../lib/gallery'
 import Layout from '../components/layout'
 
 import styles from './index.module.css'
-import galleryStyles from './gallery.module.css'
 
-const galleryPhotoCount = 2;
+const galleryUrl = 'https://photos.google.com/share/AF1QipO41GtE2yl75NTxkTXUjwKnV_h1lsO5k4vhe0Q98N7uhERjAcrirVTYt6XIzC5ePw?key=OFZkTzVLUTkyRU1fTURfWWpJMTdxQ3c1aGx6dnNR';
 
 export async function getStaticProps() {
   return {
     props: {
       members: getAllMembers(),
+      defaultMemberPhoto,
       memberPhotoSize,
-      gallery: getGalleryPhotos(galleryPhotoCount),
+      gallery: getAllGalleryPhotos(),
       galleryPhotoSize
     }
   };
 }
 
-export default function Index({ members, memberPhotoSize, gallery, galleryPhotoSize }) {
+export default function Index({ members, defaultMemberPhoto, memberPhotoSize, gallery, galleryPhotoSize }) {
   return (
     <Layout>
       <div>
@@ -37,7 +38,7 @@ export default function Index({ members, memberPhotoSize, gallery, galleryPhotoS
               {members.map(({ name, position, photoSrc }, i) => {
                 return (
                   <li key={i} className={styles.teamMember}>
-                    <Image src={photoSrc} height={memberPhotoSize.y} width={memberPhotoSize.x} alt={name} />
+                    <Image src={photoSrc || defaultMemberPhoto} height={memberPhotoSize.y} width={memberPhotoSize.x} alt={name} />
                     <div>
                       <span>{name}</span>
                       <br />
@@ -51,12 +52,15 @@ export default function Index({ members, memberPhotoSize, gallery, galleryPhotoS
         </div>
         <div id="gallery">
           <h2>Gallery</h2>
+          <div className="container text-center">
+            For our full photo gallery, click <Link href={galleryUrl}>here</Link>.
+          </div>
           <div>
-            <ul className={`row ${galleryStyles.gallery}`}>
+            <ul className={`row ${styles.gallery}`}>
               {gallery.map(({ src, alt }, i) => {
                 return (
                   <li key={i}>
-                    <Image className={galleryStyles.galleryPhoto} src={src} height={galleryPhotoSize.y} width={galleryPhotoSize.x} alt={alt} />
+                    <Image className={styles.galleryPhoto} src={src} height={galleryPhotoSize.y} width={galleryPhotoSize.x} alt={alt} />
                   </li>
                 );
               })}
