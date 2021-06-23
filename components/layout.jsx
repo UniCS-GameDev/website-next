@@ -7,6 +7,17 @@ import Facebook from '../components/icons/facebook'
 import Gitlab from '../components/icons/gitlab'
 
 export default function Layout({ title, description, children }) {
+    function navResponsive() {
+        if (typeof window === 'object'){
+            var x = document.getElementById("navbar");
+            console.log(x)
+            if (x.className === "navbar") {
+            x.className += " responsive";
+            } else {
+            x.className = "navbar";
+            }
+        }
+    }
     return (
         <div id="__themed_padding">
             <Head>
@@ -16,17 +27,19 @@ export default function Layout({ title, description, children }) {
             <input type="checkbox" className="theme-toggle" id="theme-toggler" />
             <div id="themed">
                 <header className="header">
-                    <nav className="navbar">
+                    <nav className="navbar" id="navbar">
                         <div>
-                            <Link href="/">Index</Link>{' | '}
-                            <Link href="/workshops">Tutorials</Link>{' | '}
-                            <Link href="/events">Events</Link>{' | '}
-                            <Link href="/gallery">Gallery</Link>{' | '}
-                            <Link href="/#about">About</Link>{' | '}
+                            <Link href="/">Index</Link>
+                            <Link href="/workshops">Tutorials</Link>
+                            <Link href="/events">Events</Link>
+                            <Link href="/gallery">Gallery</Link>
+                            <Link href="/#about">About</Link>
                             <Link href="/#contact">Contact</Link>
+                            <a href="javascript:void(0);" className="icon" onClick={navResponsive}>
+                            &#9776;
+                            </a>
                         </div>
                         <label className="theme-toggle-label" htmlFor="theme-toggler">
-                            <span className="d-none d-lg-block d-xl-block">Toggle theme::</span>
                         </label>
                     </nav>
                 </header>

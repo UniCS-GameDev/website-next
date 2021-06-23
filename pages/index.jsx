@@ -65,17 +65,10 @@ export default function Index({ members, memberPhotoSize, gallery, galleryPhotoS
         </div>
         <div id="contact" className="container">
           <h2>Contact Us</h2>
-          <div>
-            <form>
-              <input id="name" name="name" className={styles.formInput} placeholder="John Doe" /><br />
-              <input id="email" name="email" className={styles.formInput} placeholder="john.doe@gmail.com" /><br />
-              <label htmlFor="subject">Subject:</label><br />
-              <input id="subject" name="subject" className={styles.formInput} placeholder="Workshop Feedback" /><br />
-              <label htmlFor="message">Message:</label><br />
-              <textarea id="message" name="message" className={styles.formInput} rows="6" placeholder="Lorem ipsum dolor sit amet..." /><br />
-              <hr />
-              <input type="submit" className={styles.formSubmit} value="Send" />
-            </form>
+          <p className={styles.ColumnT}>Feel free to email us any inquiries that you may have!</p>
+          <div className={styles.Row}>
+            <p className={styles.Column}>alexandru@unicsmcr.com</p>
+            <p className={styles.Column}>mikolaj@unicsmcr.com</p>
           </div>
         </div>
       </div>

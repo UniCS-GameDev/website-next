@@ -37,10 +37,10 @@ function PlaceholderCard() {
 
 function EventCard({ title, description, datetime, location, url }) {
     return (
-        <div>
+        <div className={styles.eventCardBox}>
             <h4>{title}</h4>
             <p>{description}</p>
-            <div>
+            <div className={styles.eventSpecs}>
                 <span><Clock /> {datetime}</span>{' | '}
                 <span><Location /> {location}</span>{' | '}
                 <span><Facebook /> <Link href={url ?? '#'}>Event Announcement</Link></span>
@@ -53,7 +53,7 @@ export default function Events({ upcoming, historical }) {
     return (
         <Layout title="Events">
             <div className={styles.eventTable}>
-                <div>
+                <div className={styles.eventColumn}>
                     <h2>Upcoming Events</h2>
                     <ul className={styles.eventList}>
                         {upcoming.length > 0 && upcoming.map((props, i) => {
@@ -66,7 +66,7 @@ export default function Events({ upcoming, historical }) {
                         }) || PlaceholderCard()}
                     </ul>
                 </div>
-                <div>
+                <div className={styles.eventColumn}>
                     <h2>Past Events</h2>
                     <ul className={styles.eventList}>
                         {historical.length > 0 && historical.map((props, i) => {
