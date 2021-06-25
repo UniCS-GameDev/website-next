@@ -7,7 +7,7 @@ import { getAllWorkshops, getAllTutorials } from '../../../lib/workshops'
 import Layout from '../../../components/layout'
 
 import styles from './[tutorial].module.css'
-
+import ProgressBar from '../ProgressBar'
 export async function getStaticPaths() {
     return {
         paths: getAllWorkshops().flatMap(({ slug: workshopSlug }) => {
@@ -101,19 +101,8 @@ export default function Tutorial({ slug, created, edited, details }) {
                         <iframe className={styles.video} src={details.videoUrl} frameBorder="0" allowFullScreen></iframe>
                     </center>
                 </div>}
-
-                <h2>Contents</h2>
-                <ol className={styles.tableOfContents}>
-                    {details.tableOfContents.map((v, i) => {
-                        return (
-                            <li key={i}>
-                                <hr />
-                                {`${i}. ${v}`}
-                            </li>
-                        );
-                    })}
-                </ol>
             </div>
+            <ProgressBar contents={details.tableOfContents}/>
             <hr />
             <div className="container">
                 {details.contents.map(({ type, ...props }) => {

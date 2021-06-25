@@ -46,7 +46,7 @@
     --theme-h1: var(--theme-light-h1);
     --theme-h2: var(--theme-light-h2);
     --theme-h3: var(--theme-light-h3);
-    --theme-switch-shadow: var(--theme-light-switch-shadow);
+    --theme-switch-shadow: var(--theme-dark-switch-shadow);
     --theme-toggle-text: var(--theme-light-toggle-text);
 }
 

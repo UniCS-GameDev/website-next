@@ -27,7 +27,7 @@ export default function Layout({ title, description, children }) {
                 <header className="header">
                     <nav className="navbar" id="navbar">
                         <div>
-                            <Link href="/">Index</Link>
+                            <Link href="/">GameDev</Link>
                             <Link href="/workshops">Workshops</Link>
                             <Link href="/events">Events</Link>
                             <Link href="/#about">About</Link>
