@@ -1,7 +1,7 @@
 import Link from 'next/link'
 
 import { defaultMemberPhoto, memberPhotoSize, getAllMembers } from '../lib/members'
-import { galleryPhotoSize, getAllGalleryPhotos } from '../lib/gallery'
+import { getAllGalleryPhotos } from '../lib/gallery'
 import Layout from '../components/layout'
 
 import styles from './index.module.css'
@@ -14,13 +14,12 @@ export async function getStaticProps() {
       members: getAllMembers(),
       defaultMemberPhoto,
       memberPhotoSize,
-      gallery: getAllGalleryPhotos(),
-      galleryPhotoSize
+      gallery: getAllGalleryPhotos()
     }
   };
 }
 
-export default function Index({ members, defaultMemberPhoto, memberPhotoSize, gallery, galleryPhotoSize }) {
+export default function Index({ members, defaultMemberPhoto, memberPhotoSize, gallery }) {
   return (
     <Layout>
       <div>
@@ -33,15 +32,18 @@ export default function Index({ members, defaultMemberPhoto, memberPhotoSize, ga
         <div id="team" className="container">
           <h2>Meet the Team</h2>
           <div>
-            <ul className={`row ${styles.teamMemberList}`}>
+            <ul className="row">
               {members.map(({ name, position, photoSrc }, i) => {
                 return (
-                  <li key={i} className={styles.teamMember}>
-                    <img src={photoSrc || defaultMemberPhoto} height={memberPhotoSize.y} width={memberPhotoSize.x} alt={name} />
-                    <div>
-                      <span>{name}</span>
-                      <br />
-                      <span>{position}</span>
+                  <li key={i}>
+                    <div className={`card ${styles.teamMemberCard}`}>
+                      <div className={styles.teamMemberCard} style={{overflow: 'hidden'}}>
+                        <img className="card-thumbnail" src={photoSrc || defaultMemberPhoto} alt={name} />
+                      </div>
+                      <div className="card-content card-content-rows">
+                        <span className="card-item text-center">{name}</span>
+                        <span className="card-item text-center">{position}</span>
+                      </div>
                     </div>
                   </li>
                 );
@@ -55,11 +57,13 @@ export default function Index({ members, defaultMemberPhoto, memberPhotoSize, ga
             For our full photo gallery, click <Link href={galleryUrl}>here</Link>.
           </div>
           <div>
-            <ul className={`row ${styles.gallery}`}>
+            <ul className="row">
               {gallery.map(({ src, alt }, i) => {
                 return (
-                  <li key={i}>
-                    <img className={styles.galleryPhoto} src={src} height={galleryPhotoSize.y} width={galleryPhotoSize.x} alt={alt} />
+                  <li key={i} className={styles.getAllGalleryPhotos}>
+                    <div className="container">
+                      <img className={`responsive-image ${styles.galleryPhoto}`} src={src} alt={alt} />
+                    </div>
                   </li>
                 );
               })}
@@ -67,12 +71,14 @@ export default function Index({ members, defaultMemberPhoto, memberPhotoSize, ga
           </div>
         </div>
         <div id="contact" className="container">
-          <h2>Contact Us</h2>
-          <p className={styles.ColumnT}>Feel free to email us any inquiries that you may have!</p>
-          <div className={styles.Row}>
-            <p className={styles.Column}>alexandru@unicsmcr.com</p>
-            <p className={styles.Column}>mikolaj@unicsmcr.com</p>
+          <div className="text-center">
+            <h2>Contact Us</h2>
+            <p>Feel free to email us any inquiries that you may have!</p>
           </div>
+          <ul className="row">
+            <li><span>alexandru@unicsmcr.com</span></li>
+            <li><span>mikolaj@unicsmcr.com</span></li>
+          </ul>
         </div>
       </div>
     </Layout>

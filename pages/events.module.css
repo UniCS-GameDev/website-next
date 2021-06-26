@@ -4,27 +4,32 @@
     gap: 1em;
     justify-content: center;
 }
-@media only screen and (max-width: 600px){
+
+@media only screen and (max-width: 600px) {
     .eventTable {
         flex-direction: column;
         gap: 0em;
     }
-    .eventList{
+    .eventList {
         padding-inline-start: 0px;
     }
 }
-.eventColumn{
+
+.eventColumn {
     flex: 50%
 }
+
 .eventList {
     list-style: none;
 }
-.eventCardBox{
+
+.eventCardBox {
     border: 2px solid #008000;
     margin: 10px;
     padding: 3px;
 }
-.eventSpecs{
+
+.eventSpecs {
     display: flex;
     justify-content: center;
     padding: 2px;

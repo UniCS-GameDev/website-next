@@ -1,58 +1,8 @@
-.teamMemberList {
-    gap: 1em;
-    list-style: none;
-}
-
-.teamMember {
-    background-color: var(--theme-bg-accent);
+.teamMemberCard {
     height: 10em;
     width: 10em;
-    text-align: center;
-}
-
-.gallery {
-    gap: 1em;
-    list-style: none;
 }
 
 .galleryPhoto {
     max-width: 512px;
-    max-height: 288px;
-}
-
-.formInput {
-    min-width: 100%;
-}
-
-.formSubmit {
-    display: block;
-    max-width: 4em;
-    margin-left: auto;
-    margin-right: auto;
-}
-.Column{
-    flex: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #087F4F;
-}
-.ColumnT{
-    flex: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: large;
-}
-
-.Row{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-}
-@media only screen and (max-width: 600px){
-    .Row {
-        flex-direction: column;
-    }
 }

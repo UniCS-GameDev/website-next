@@ -8,7 +8,7 @@
     --theme-light-h1: #111111;
     --theme-light-h2: darkgoldenrod;
     --theme-light-h3: darkcyan;
-    --theme-light-switch-shadow: #373d4e;
+    --theme-light-switch-shadow: cyan;
     --theme-light-toggle-text: 'light';
 
     --theme-dark-bg: #111111;
@@ -36,27 +36,50 @@
     --theme-toggle-text: var(--theme-dark-toggle-text);
 }
 
-.theme-toggle:checked~#themed {
-    --theme-bg: var(--theme-light-bg);
-    --theme-bg-accent: var(--theme-light-bg-accent);
-    --theme-fg: var(--theme-light-fg);
-    --theme-fg-accent: var(--theme-light-fg-accent);
-    --theme-text: var(--theme-light-text);
-    --theme-link: var(--theme-light-link);
-    --theme-h1: var(--theme-light-h1);
-    --theme-h2: var(--theme-light-h2);
-    --theme-h3: var(--theme-light-h3);
-    --theme-switch-shadow: var(--theme-dark-h3);
-    --theme-toggle-text: var(--theme-light-toggle-text);
+@media screen and (prefers-color-scheme: light) {
+    :root {
+        --theme-bg: var(--theme-light-bg);
+        --theme-bg-accent: var(--theme-light-bg-accent);
+        --theme-fg: var(--theme-light-fg);
+        --theme-fg-accent: var(--theme-light-fg-accent);
+        --theme-text: var(--theme-light-text);
+        --theme-link: var(--theme-light-link);
+        --theme-h1: var(--theme-light-h1);
+        --theme-h2: var(--theme-light-h2);
+        --theme-h3: var(--theme-light-h3);
+        --theme-switch-shadow: var(--theme-light-switch-shadow);
+        --theme-toggle-text: var(--theme-light-toggle-text);
+    }
+
+    .theme-toggle:checked~#themed {
+        --theme-bg: var(--theme-dark-bg);
+        --theme-bg-accent: var(--theme-dark-bg-accent);
+        --theme-fg: var(--theme-dark-fg);
+        --theme-fg-accent: var(--theme-dark-fg-accent);
+        --theme-text: var(--theme-dark-text);
+        --theme-link: var(--theme-dark-link);
+        --theme-h1: var(--theme-dark-h1);
+        --theme-h2: var(--theme-dark-h2);
+        --theme-h3: var(--theme-dark-h3);
+        --theme-switch-shadow: var(--theme-dark-h3);
+        --theme-toggle-text: var(--theme-light-dark-text);
+    }
 }
 
-.theme-toggle {
-    clip: rect(1px,1px,1px,1px);
-    display: none;
-    height: 1px;
-    overflow: hidden;
-    position: absolute!important;
-    width: 1px;
+@media screen and (prefers-color-scheme: dark) {
+    .theme-toggle:checked~#themed {
+        --theme-bg: var(--theme-light-bg);
+        --theme-bg-accent: var(--theme-light-bg-accent);
+        --theme-fg: var(--theme-light-fg);
+        --theme-fg-accent: var(--theme-light-fg-accent);
+        --theme-text: var(--theme-light-text);
+        --theme-link: var(--theme-light-link);
+        --theme-h1: var(--theme-light-h1);
+        --theme-h2: var(--theme-light-h2);
+        --theme-h3: var(--theme-light-h3);
+        --theme-switch-shadow: var(--theme-dark-h3);
+        --theme-toggle-text: var(--theme-light-toggle-text);
+    }
 }
 
 .theme-toggle-label {

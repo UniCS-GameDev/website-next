@@ -1,35 +1,9 @@
-.card {
-    width: 20em;
-    height: 20em;
-    min-width: 100%;
-    min-height: 100%;
-    padding: 0;
+.workshopCard {
+    max-width: 20em;
+    max-height: 20em;
 }
 
-.cardThumbnail {
-    position: absolute;
-}
-
-.cardContent {
-    min-height: 100%;
-    padding: 1em;
-    position: relative;
-}
-
-.workshopList {
-    gap: 1em;
-    list-style: none;
-}
-
-.workshop {
-    background-color: var(--theme-bg-accent);
-}
-
-.tutorialList {
-    gap: 1em;
-    list-style: none;
-}
-
-.tutorial {
-    background-color: var(--theme-bg-accent);
+.tutorialCard {
+    max-width: 20em;
+    max-height: 20em;
 }

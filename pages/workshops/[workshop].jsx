@@ -45,20 +45,17 @@ export default function Workshop({ slug: workshopSlug, details: workshopDetails,
                     {workshopDetails.description}
                 </p>
             </div>
-            <br />
-            <div className="container">
-                <ul className={`row ${styles.tutorialList}`}>
+            <div className={`container`}>
+                <ul className="row">
                     {tutorials.map(({ slug, created, edited, details }, i) => {
                         return (
-                            <li key={i} className={styles.tutorial}>
+                            <li key={i}>
                                 <Link href={`/workshops/${workshopSlug}/${slug}`} passHref>
-                                    <div className={`container ${styles.card}`}>
-                                        <div className={styles.cardThumbnail}>
-                                            <img src={details.thumbnail || fallbackTutorialThumbnail} height="320" width="320" alt={slug} />
-                                        </div>
-                                        <div className={`text-center ${styles.cardContent}`}>
-                                            <span>{details.title}</span><br />
-                                            <span>{details.description}</span>
+                                    <div className={`card ${styles.tutorialCard}`}>
+                                        <img className="card-thumbnail" src={details.thumbnail || fallbackTutorialThumbnail} alt={slug} />
+                                        <div className="card-content flex-rows">
+                                            <span className="card-item text-center">{details.title}</span>
+                                            <span className="card-item text-center">{details.description}</span>
                                         </div>
                                     </div>
                                 </Link>
