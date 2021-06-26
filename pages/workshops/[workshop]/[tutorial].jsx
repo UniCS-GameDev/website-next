@@ -1,13 +1,13 @@
 import hljs from 'highlight.js' // TODO(mikolaj): consider only including necessary languages, instead of all of them
 import micromark from 'micromark'
 
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 
 import { getAllWorkshops, getAllTutorials } from '../../../lib/workshops'
 import Layout from '../../../components/layout'
 
 import styles from './[tutorial].module.css'
-import ProgressBar from '../ProgressBar'
+
 export async function getStaticPaths() {
     return {
         paths: getAllWorkshops().flatMap(({ slug: workshopSlug }) => {
@@ -70,21 +70,71 @@ function Head({ title }) {
         <h2>{title}</h2>
     );
 }
-
+function hashIds(id){
+    return id.toLowerCase().trim();
+}
+function handleStep(title){
+    if(document.getElementById(title+'button').innerHTML === 'Mark step as completed'){
+        if(document.getElementById('stepper').lastChild !== document.getElementById(title + 'item')){
+            document.getElementById(title + 'tail').style.backgroundColor = '#008000';
+        }
+        document.getElementById(title + 'icon').style.backgroundColor = '#008000';
+        document.getElementById(title+'button').innerHTML = 'Mark step as incomplete';
+        document.getElementById(title+'button').classList.add(styles.completed)
+        return;
+    }
+    if(document.getElementById(title+'button').innerHTML === 'Mark step as incomplete'){
+        document.getElementById(title + 'tail').style.backgroundColor = '#f0f0f0';
+        document.getElementById(title + 'icon').style.backgroundColor = '#f0f0f0';
+        document.getElementById(title+'button').innerHTML = 'Mark step as completed';
+        document.getElementById(title+'button').classList.remove(styles.completed)
+    }
+}
 function Step({ title, body }) {
+
     return (
-        <div>
+        <div id={hashIds(title)}>
             <h3>{title}</h3>
             <div className="text-break" dangerouslySetInnerHTML={{ __html: markdown(body) }} />
+            <button id={title+'button'} onClick={()=>handleStep(title)} className={styles.completeButton}>Mark step as completed</button>
         </div>
     );
 }
 
 export default function Tutorial({ slug, created, edited, details }) {
+    const [display, setDisplay] = useState('<')
+    const [windowSize, setWindowSize] = useState({
+        width: undefined,
+      });
+    function handleNav () {
+        if (document.getElementById('floating-modal').style.width !== '0px') {
+          document.getElementById('floating-modal').style.width = '0px'
+          document.getElementById('floating-modal').style.display = 'none'
+          document.getElementById('close-button').style.marginLeft = '0px'
+          setDisplay('>')
+        } else {
+          document.getElementById('floating-modal').style.width = '-moz-fit-content'
+          document.getElementById('floating-modal').style.width = 'fit-content'
+          document.getElementById('floating-modal').style.display = 'block'
+          setDisplay('<')
+          document.getElementById('close-button').style.marginLeft = getComputedStyle(document.getElementById('floating-modal')).width
+        }
+    }
     useEffect(() => {
+        document.getElementById('close-button').style.marginLeft = getComputedStyle(document.getElementById('floating-modal')).width
         hljs.highlightAll();
+        function handleResize() {
+            setWindowSize({
+              width: window.innerWidth,
+            });
+          }
+          window.addEventListener("resize", handleResize);
+          handleResize();
+          return () => window.removeEventListener("resize", handleResize);
     }, []);
-
+    useEffect(()=>{
+        document.getElementById('close-button').style.marginLeft = getComputedStyle(document.getElementById('floating-modal')).width
+    },[windowSize])
     return (
         <Layout title={slug}>
             <div className="container">
@@ -102,7 +152,30 @@ export default function Tutorial({ slug, created, edited, details }) {
                     </center>
                 </div>}
             </div>
-            <ProgressBar contents={details.tableOfContents}/>
+            <div style={{display: 'flex'}}>
+            <button id='close-button' className={styles.openbtn} onClick={handleNav}>{display}</button>
+            <div id='floating-modal' className={styles.floatingModal}>
+            <div id={'stepper'} className={styles.StepVertical}>
+                {details.tableOfContents.map((v, i) => {
+                    return (
+                    <div id={v +'item'} key={i} className={styles.StepItem}>
+                        <a href={'#' + hashIds(v)}>
+                            <div className={styles.ItemContainer}>
+                                <div id={v +'tail'} className={styles.ItemTail}/>
+                                <div id={v+ 'icon'}className={styles.ItemIcon}/>
+                                <div className={styles.ItemContent}>
+                                <div className={styles.ItemTitle}>
+                                    {v}
+                                </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    );
+                })}
+            </div>
+            </div>
+            </div>
             <hr />
             <div className="container">
                 {details.contents.map(({ type, ...props }) => {
