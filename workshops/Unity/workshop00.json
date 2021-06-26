@@ -1,0 +1,157 @@
+{
+    "title": "Workshop 00",
+    "description": "",
+    "thumbnail": "",
+    "videoUrl": "",
+    "tableOfContents": [
+        "Version Control Systems",
+        "Setting up a Git Repository",
+        "Setting up a Working Branch",
+        "Gitignores",
+        "Setting up Unity and Visual Studio",
+        "Unity Layout",
+        "Getting Started",
+        "Creating a Scene",
+        "Creating a Main Menu",
+        "Exporting the Project",
+        "Finishing Off"
+    ],
+    "contents": [
+        {
+            "type": "heading",
+            "title": "Errata"
+        },
+        {
+            "type": "infopoint",
+            "body": [
+                {
+                    "type": "tutstep",
+                    "title": "New Main Menu Scene Structure (01/03/2021)",
+                    "body": "Since the live workshop, a mistake was uncovered in the structure of the main menu scene (as given in this script and as covered in the live session), which meant that the UI components would not scale to fit different screen sizes.\n\nTo fix this issue, the Canvas element was treated as the \"UI Root\". All UI elements were reparented to the Canvas (by dragging from the \"UI Root\" to the Canvas element in the Hierarchy), and the MainMenuManager script was added to the Canvas as a component.\n\nThe previous \"UI Root\" element was removed from the Hierarchy. Furthermore, the Canvas had its UI Scale Mode set to \"Scale with Screen Size\" and its Screen Match Mode set to 0.5.\n\n\n"
+                }
+            ]
+        },
+        {
+            "type": "heading",
+            "title": "Welcome to Git"
+        },
+        {
+            "type": "tutstep",
+            "title": "Version Control Systems",
+            "body": "When programming, it is important to use some form of version control system:\n- It tracks edit history and allows you to revert to an earlier state of work\n- It allows you to collaborate and work on a project with multiple people\n- Most importantly, it functions as a backup of the code\n\n\n"
+        },
+        {
+            "type": "infopoint",
+            "body": [
+                {
+                    "type": "tutstep",
+                    "title": "Choosing a VCS",
+                    "body": "With Unity, there are 2 main forms of VCS that we can use. There is a builtin solution called \"Unity Collaborate\", which comes with high Editor and Unity Cloud integration. There is also the option of using your own VCS (git, svn, mercurial, etc.).\n\n#### Unity Collaborate\nUnity Collaborate is the branded version control built into the Unity Editor. It integrates with the proprietary Unity Cloud service, and all of your code is held on Unity's servers. It links in with their proprietary organisation system to allow you to collaborate with other people and form \"projects\" to accomplish this organisation.\n\nSummary:\n- Heavily integrated with the Unity Editor so simple to use\n- Requires very little setup\n- Handles text as well as binary assets automatically\n- Limited to 5 people per project for the free plan\n- Opaque to the user; you have no idea who has access to the code\n\n#### Custom VCS\nUsing a custom VCS system is another option. You could set up whatever system you prefer, but for the workshops we will only cover Git. Further, whilst you could use whatever Git server you wanted (e.g. you own if you had that set up), one of the most popular providers and the one we will use in the workshops is GitHub.\n\nSummary:\n- Simple, lightweight, free, and commonly used VCS\n- Transparent to the user; you can host your code wherever you please and can switch out providers at a moments notice\n- Not limited to an arbitrary collaborator cap by Unity\n- Have to do some custom setup to handle binary assets correctly (GitLFS)\n- Not directly integrated with the Unity Editor; accessible via the command line or via IDE integrations\n\n\n"
+                }
+            ]
+        },
+        {
+            "type": "tutstep",
+            "title": "Setting up a Git Repository",
+            "body": "For the rest of the workshops, we will be using Git as our VCS. We have created a repository for you, which you can fork and get started. To set up a local repo from an existing remote, we can simply follow:\n- Create a GitHub account\n- Fork our repository at https://github.com/UniCS-GameDev/UnityTutorialsProject\n- Clone the resulting repository using\n```bash\n$ git clone https://github.com/YOUR_USER_NAME/UnityTutorialsProject.git\n```\nMore information on how to clone forked repositories is available here: https://urlshortner.org/WAE2u\n\nWe will be having a separate branch for each workshop, so you can either keep your own work if you attended the tutorial or FETCH our changes if you missed a week. More information on how to update a forked project can be found here: https://urlshortner.org/57e2y\n\n\n"
+        },
+        {
+            "type": "infopoint",
+            "body": [
+                {
+                    "type": "tutstep",
+                    "title": "Git Branches",
+                    "body": "When collaborating with multiple people, we don't want to waste time on constantly resolving merge conflicts due to multiple people writing to the same file in different ways. One way around this is to use branches. There are a few different \"disciplines\" of git management using branches, but the simplest is to have a \"master\" branch, and create \"feature\" branches for each feature you intend to add. Before starting work, you create the branch from master. You then work on said branch while implementing the feature, and when finished you submit a pull request (PR) to merge the branch back into master. To create a new branch and switch to it enter the following commands:\n\n\n"
+                }
+            ]
+        },
+        {
+            "type": "tutstep",
+            "title": "Setting up a Working Branch",
+            "body": "```bash\n$ git branch feature # creates a local branch named feature\n$ git checkout feature # switches our HEAD to point to the branch\n```\nNow we can add some features! For now that will be a simple text file, and we will then save our work and push it to the remote repository.\n```bash\n$ echo \"foobar\" > test.md # create our \"feature\"\n$ git add . # start tracking all changed files\n$ git commit -m \"Added a test file\" # save our work\n```\nHere -u will push branch info, so will create a branch named \"feature\" on the origin and will then set the local \"feature\" branch to track the new remote branch (you won't have to use -u again)\n```bash\n$ git push -u origin feature\n```\nNow, on GitHub you can create a pull request from the new feature branch to master. This can then be merged and the changes will be applied to master. The feature branch should then be deleted and a new branch can be created for new features!\n\nOnce our feature branch has been deleted on the remote, we need to switch back to master on our local repo and delete our local copy of the now-stale branch. To do so simply enter the following commands:\n```bash\n$ git checkout master # to switch back to master\n$ git branch -d feature # remove the stale branch\n$ git pull # fetch the new feature from master!\n```\nNow we have successfully updated our local repo to the latest available copy, and we have our new feature implemented! These are the very basics of Git, and there are a lot of options we haven't discussed, but this should be enough to get started. Feel free to look up different organisation methodologies and research all the switches available.\n\n\n"
+        },
+        {
+            "type": "infopoint",
+            "body": [
+                {
+                    "type": "tutstep",
+                    "title": "Merge Conflicts",
+                    "body": "Worth mentioning are so-called \"merge conflicts\", which occur when both a local and remote copy have been edited in different ways. Git will complain about not being able to automatically merge the two copies. When this happens, it will write out the changes in both versions to the file (marked with \">>>>>>>>\" or something similar) and you are expected to merge the files manually. It is enough to simply delete the lines that you don't want and push your work.\n```bash\n### the merge conflict looks somewhat like this\n# <<<<<<< HEAD\n# bar # edited by local\n# =======\n# baz # edited by remote\n# >>>>>>> 1e2335e3c9ee297e8def1600f2c0c5ec1c4fd740\n### once the conflict has been resolved, simply commit and push your work\n$ git add . && git commit -m \"resolved merge conflict\" && git push\n```\n\n\n"
+                }
+            ]
+        },
+        {
+            "type": "tutstep",
+            "title": "Gitignores",
+            "body": "Finally, it would also be prudent to discuss gitignores. These specify which files should and should not be tracked by the VCS. The git repository we set up for this workshop has a built-in gitignore for Unity and C#, so that we won't track unneeded user-specific files and files which can be derived from the sources. Those kinds of files, along with binary assets, should not be in a Git repository.\n\nUser-specific files would force all people to use 1 set of settings and would cause a diff whenever someone edits the settings to suit their preferences, causing unnecessary noise in the commit history. Build artefacts clog up the repository without providing any benefit, as they can be regenerated. They simply increase the download size of the repo. Binary files need special handling with GitLFS otherwise they too will cause large diffs for no real gain.\n\nFor other gitignores: https://www.toptal.com/developers/gitignore\n\n\n"
+        },
+        {
+            "type": "infopoint",
+            "body": [
+                {
+                    "type": "tutstep",
+                    "title": "IDE or Text Editor?",
+                    "body": "#### Any Text Editor\nAll you need to script in Unity is a text editor to edit the C# scripts. Unity will handle the compilation of your scripts behind the scenes. This means that there is no need for an IDE, but you also miss out on some of the debugging and refactoring support specific to Unity that comes packaged with other IDEs. This is definitely a viable alternative though.\n\n#### Rider\nA cross-platform .NET IDE from JetBrains. Has better refactorings and warnings/suggestions than VS by default (since Rider has Unity integration built-in as a first-class feature), thanks to the IntelliJ refactoring engine.\n\n#### Visual Studio\nA heavyweight IDE from Microsoft. It is the default experience for Unity editing and is pushed in the Hub when you install a Unity version. Has worse refactorings and warnings than Rider by default. Has Unity support available as an external \"module\" pickable during installation.\n\n#### Visual Studio Code\nA cross-platform, diet alternative to VS. It has a specific Unity extension, and Unity supports opening C# files in VSC as an external text editor. You might also have to install the specific \"Visual Studio Code\" unity package, but your mileage may vary.\n\n\n"
+                }
+            ]
+        },
+        {
+            "type": "tutstep",
+            "title": "Setting up Unity and Visual Studio",
+            "body": "To actually set up Unity, there are two main options. You can download a specific version installer, or you can download the \"Unity Hub\", which manages multiple Unity installations. Feel free to use whichever download suits you best.\n\nThe text editor that people will choose is entirely personal preference, and so we will not go and pick one for you. However, for ease of writing and to maintain a coherent development environment for the course of the workshops we will use Visual Studio as our text editor.\n\nTo set up Visual Studio, download it from the Microsoft site. The Community edition is free and will suffice for all work that you will be doing in Unity. When setting it up in the installer, be sure to include the Unity module.\n\nOnce both Unity and Visual Studio are set up, select VS as your editor of choice in Unity. Open the Unity Editor, navigate to \"Edit > Preferences > External Tools\" and from the dropdown pick  \"Browse...\" and find the VS binary. Once selected, your environment is set up for Unity development and we can open our previously cloned git repository for the first time in Unity!\n\n"
+        },
+        {
+            "type": "heading",
+            "title": "Welcome to the Unity Editor"
+        },
+        {
+            "type": "tutstep",
+            "title": "Unity Layout",
+            "body": "When you first start up the editor, you will be presented with an empty scene and a bunch of control panes. For ease of reference we will only cover the default layout, but there are a few other builtin layouts, and you can create your own presets as well.\n\n#### The Scene Pane\nThe central pane is the scene pane. It shows you a visual representation of the currently loaded scenes and the entities they contain. You can rotate and translate the camera within this pane and click on entities to interact with them. Another part of this central pane is the game pane. This will be used to actually playtest the game and to get an idea of what the player will experience at various points in the level.\n\n#### The Hierarchy Pane\nThe hierarchy pane shows a tree representation of your game, including the scenes and the content of said scenes. It allows for searching for a specifically named entity, for adding entities to a scene, and for selecting an entity for further inspection.\n\n#### The Inspector Pane\nThe inspector pane will allow you to \"inspect\" an entity in your scene (hence the name). When an entity is selected from the hierarchy pane, its components will show up in the inspector pane for modification. Furthermore, this inspection also works on any assets you might want to take a look at. A script, for example, will have a little info about itself pop up in the inspector when it is selected from the project assets pane.\n\n#### The Project Assets Pane\nThis pane allows you to view all the assets included in your project. It will be shown as a directory structure, and allows for searching for a specific asset and organising the project file structure however you want. There are also other miscellaneous search functions (search by type or by tag) and a favoriting mechanism.\n\n\n"
+        },
+        {
+            "type": "infopoint",
+            "body": [
+                {
+                    "type": "tutstep",
+                    "title": "Project and Editor Settings",
+                    "body": "#### Project Settings\nProject settings apply only to the current project, and cover basics such as \"Audio\", \"Graphics\", \"Input Manager\", \"Physics\", \"Time\", and others. Found under \"Edit > \"Project Settings\", these have to be set per project. Project-specific per-platform build settings can also be found under \"Player\", including the choice of C# backend (Mono or IL2CPP), whether to target .NET Framework (bad, windows only) or .NET Standard 2.0 (much better, cross-platform), and the input system to use (legacy vs modern input system).\n\n#### Unity Settings\nEditor settings relate to global settings that persist across projects. These settings include which editor to use for editing script files, the locations of external SDKs, and profiler settings. They can be found under \"Edit > Preferences\".\n\n"
+                },
+                {
+                    "type": "tutstep",
+                    "title": "The Asset Store",
+                    "body": "Publishing packages: https://docs.unity3d.com/Manual/AssetStorePublishing.html\n\nSometimes, you just want to use a premade asset. From the technically minded folk, who don't feel comfortable in their own modelling skills but still want to make a 3D game, to the highly artistic individuals who would prefer to use a robust and pre-tested software platform than rolling their own, there are many cases when you cannot by yourself create every single individual entity in a game. For such cases, the Unity Asset Store is a way of building upon the work done by others. To access the store, navigate to \"Window > Asset Store\".\n\nOn the Asset Store one can find software packages, art packages, scene packages and many other miscellaneous assets either for free or for a price. The quality of said assets varies as expected, with the free ones being on the whole worse than the paid ones. It can be a really useful tool in making up for ones own deficiencies and getting a game out the door, and the best part is that it is dead simple to use.\n\nOnce you have searched for a package and settled on something you would like to use, you need to add the package to your assets, and import it into unity. Once you have added the package to unity, back in the editor you need to navigate to \"Window > Package Manager\" and select the package from the listed ones, then click \"Download\" and then \"Import\". This will download and import the selected package into your project assets, and will make it visible in the relevant editor pane.\n\n\n"
+                }
+            ]
+        },
+        {
+            "type": "heading",
+            "title": "Building our Game"
+        },
+        {
+            "type": "tutstep",
+            "title": "Getting Started",
+            "body": "Before starting work, create a new git branch:\n```bash\n$ git branch workshop00\n$ git switch workshop00\n```\n\nMake sure to create a new 3D Unity project from the Hub (or otherwise from the Unity Editor directly), and open it.\n\n"
+        },
+        {
+            "type": "tutstep",
+            "title": "Creating a Scene",
+            "body": "1. Right click in the Hierarchy pane, and press \"New 3D Objects > Cube\"\n2. Select the new Cube in the Hierarchy pane and look at the Inspector pane\n3. Play around with the transform component fields, changing the rotation / position / scale fields\n4. Save the scene (naming it SampleScene) and press \"Play\" in the editor to enter \"play mode\", where you can test the game\n5. Exit play mode when you are finished with testing\n\n"
+        },
+        {
+            "type": "tutstep",
+            "title": "Creating a Main Menu",
+            "body": "1. Goto Assets/Scenes in the Project pane, right-click and select \"Create > Scene\". Name it MainMenu\n2. Open the MainMenu scene by double clicking or by dragging it into the Hierarchy pane if it isnt open already\n3. Right click in the Hierarchy pane, and select \"UI > Panel\"\n4. Select the \"Canvas\" element in the Hierarchy, and in the Inspector under \"Canvas Scaler > UI Scale Mode\" select \"Scale with Screen Size\". Then, set the \"Match\" slider value to 0.5 to make the canvas scale evenly in both height and width\n5. Select the Panel in the Hierarchy, and set its scale to 1.1,1.1,1 in the Inspector pane. This is to ensure that the rounded corners cannot be seen\n5. Right click on the Canvas element in the Hierarchy and select \"UI > Text\"\n6. Set the newly-created \"Text\" element's position to 0,100,0 in the Inspector pane. Change its text content to \"My Game\" or another name of your choice, and ptionally set the text alignment to central\n7. Right click on the Canvas element in the Hierarchy and select \"UI > Button\"\n8. Set the newly-created \"Button\" element's position to 0,0,0 in the Inspector pane. Expand the Button's children in the Hierarchy and select the Text child. Edit the child's text content to \"Start\" or similar, and optionally set the text alignment to central\n9. Goto Assets in the Project pane, right click and select \"Create > Folder\". Name it \"Scripts\"\n10. Goto Assets/Scripts in the Project Pane, right click and select \"Create > C# Script\". Name it MainMenuManager\n11. Select the Canvas element in the Hierarchy, and in the Inspector pane click \"Add Component\"\n12. Search for Main, and select the \"Main Menu Manager\" script that is shown\n13. Goto Assets/Scripts in the Project pane and open the MainMenuManager script in your favourite text editor (alternatively double click on the script name when inspecting the Canvas in the Hierarchy; this should open the script in chosen text editor)\n14. Replace the contents of the script with the following\n```cs\nusing UnityEngine;\nusing UnityEngine.SceneManagment;\nusing UnityEngine.UI;\n\npublic class MainMenuManager : MonoBehaviour {\n}\n```\n15. Add the following serialized variables to store a reference to the start game button and to store the name of the starting scene\n```cs\n[SerializeField] private Button startGameButton;\n[SerializeField] private string startSceneName;\n```\n16. Add the Start method, logging some debug output and assigning a listener to the button press\n```cs\nprivate void Start() {\n    Debug.Log($\"Button is null? {startGameButton == null}\");\n    Debug.Log($\"Button.OnClick is null? {startGameButton.onClick == null}\");\n    startGameButton.onClick.AddListener(StartGame);\n}\n```\n17. Add the StartGame method, loading the starting scene and adding it to the hierarchy\n```cs\nprivate void StartGame() {\n    AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(startSceneName, LoadSceneMode.Additive);\n    asyncLoad.completed += OnStartGame;\n}\n```\n18. Add the OnStartGame method, unloading the main menu scene\n```cs\nprivate void OnStartGame(AsyncOperation loadOperation) {\n    _ = SceneManager.UnloadSceneAsync(gameObject.scene);\n}\n```\n19. Save the script and return to the Unity Editor. Select the Canvas element in the Hierarchy, and drag the Button element into the \"Start Game Button\" field in the Inspector pane. Set the \"Start Scene Name\" field to SampleScene (or to whatever you saved the initial scene as). If you deleted your sample scene or otherwise didnt save it, then recreate a blank scene and put its name in this field\n20. Save the scene and press \"Play\" to test the game. When you click on the \"Start Game\" button you should be taken to your chosen starting scene\n21. Exit play mode when you are finished with testing\n\n"
+        },
+        {
+            "type": "tutstep",
+            "title": "Exporting the Project",
+            "body": "1. Open the Build Settings (navigate to \"File > Build Settings\") and select the platform you would like to build for\n2. Add the scenes you want in the final game (i.e. SampleScene and MainMenu) to the build. Ensure that they are ticked in the scene list and that MainMenu is the first scene in the list (with build id 0). This ensures that it is loaded as the default scene\n3. Adjust any other miscellaneous settings regarding the build, such as the target platform (e.g. windows, mac, or linux). Feel free to read up on the different options available\n3. Build and run the game (navigate to \"File > Build and Run\"). This should open a directory selector for you to pick where the build game should go. Create or select a directory. Then, once Unity finished building the game it should open automatically (if not, then navigate to the folder you specified and execute the game binary within) and you can play your game for real\n\n"
+        },
+        {
+            "type": "tutstep",
+            "title": "Finishing Off",
+            "body": "```bash\n$ git add .\n$ git commit -m \"Finished workshop 0\"\n$ git push -u origin workshop00\n```\n\nAt this point, you should create a merge request in github (or merge from the commandline), and merge the workshop00 branch onto the master branch.\n\n```bash\n$ git checkout main\n$ git branch -d workshop00\n$ git pull\n```\n"
+        }
+    ]
+}

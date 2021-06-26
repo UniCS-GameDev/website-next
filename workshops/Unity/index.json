@@ -1,0 +1,8 @@
+{
+    "title": "Unity Tutorial Series",
+    "intro": "Learn how to develop games in Unity!",
+    "description": "Join our live sessions in order to develop an RPG game based on a modelled map of our campus! 8 weekly tutorials starting from beginner level and progressing to intermediate concepts. Featured advanced videos included",
+    "prerequisites": [],
+    "taught": ["unity", "c#"],
+    "thumbnail": ""
+}
