@@ -4,5 +4,6 @@ module.exports = {
   },
   productionBrowserSourceMaps: true,
   poweredByHeader: false,
-  reactStrictMode: true
+  reactStrictMode: true,
+  target: "serverless"
 }
