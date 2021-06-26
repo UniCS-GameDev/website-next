@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import Link from 'next/link'
 
 import { getAllWorkshops } from '../lib/workshops'
@@ -34,7 +33,7 @@ export default function Workshops({ workshops }) {
                                 <Link href={`/workshops/${slug}`} passHref>
                                     <div className={`container ${styles.card}`}>
                                         <div className={styles.cardThumbnail}>
-                                            <Image src={details.thumbnail || fallbackWorkshopThumbnail} height="320" width="320" objectFit="cover" alt={slug} />
+                                            <img src={details.thumbnail || fallbackWorkshopThumbnail} height="320" width="320" objectFit="cover" alt={slug} />
                                         </div>
                                         <div className={`text-center ${styles.cardContent}`}>
                                             <span>{details.title}</span><br />

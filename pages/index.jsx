@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import Link from 'next/link'
 
 import { defaultMemberPhoto, memberPhotoSize, getAllMembers } from '../lib/members'
@@ -38,7 +37,7 @@ export default function Index({ members, defaultMemberPhoto, memberPhotoSize, ga
               {members.map(({ name, position, photoSrc }, i) => {
                 return (
                   <li key={i} className={styles.teamMember}>
-                    <Image src={photoSrc || defaultMemberPhoto} height={memberPhotoSize.y} width={memberPhotoSize.x} alt={name} />
+                    <img src={photoSrc || defaultMemberPhoto} height={memberPhotoSize.y} width={memberPhotoSize.x} alt={name} />
                     <div>
                       <span>{name}</span>
                       <br />
@@ -60,7 +59,7 @@ export default function Index({ members, defaultMemberPhoto, memberPhotoSize, ga
               {gallery.map(({ src, alt }, i) => {
                 return (
                   <li key={i}>
-                    <Image className={styles.galleryPhoto} src={src} height={galleryPhotoSize.y} width={galleryPhotoSize.x} alt={alt} />
+                    <img className={styles.galleryPhoto} src={src} height={galleryPhotoSize.y} width={galleryPhotoSize.x} alt={alt} />
                   </li>
                 );
               })}
