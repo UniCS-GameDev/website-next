@@ -40,7 +40,7 @@ export default function Index({ members, defaultMemberPhoto, memberPhotoSize, ga
                       <div className={styles.teamMemberCard} style={{overflow: 'hidden'}}>
                         <img className="card-thumbnail" src={photoSrc || defaultMemberPhoto} alt={name} />
                       </div>
-                      <div className="card-content card-content-rows">
+                      <div className="card-content flex-rows">
                         <span className="card-item text-center">{name}</span>
                         <span className="card-item text-center">{position}</span>
                       </div>
