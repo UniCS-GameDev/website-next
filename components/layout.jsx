@@ -46,9 +46,6 @@ export default function Layout({ title, description, children }) {
                             <Link href="/">GameDev</Link>
                             <Link href="/workshops">Workshops</Link>
                             <Link href="/events">Events</Link>
-                            <Link href="/#about">About</Link>
-                            <Link href="/#gallery">Gallery</Link>
-                            <Link href="/#contact">Contact</Link>
                             <label className="nav-toggle-label" htmlFor="nav-toggler">
                                 &#9776;
                             </label>
