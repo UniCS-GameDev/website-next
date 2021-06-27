@@ -22,18 +22,6 @@
     --theme-dark-h3: #01A060;
     --theme-dark-switch-shadow: #fce477;
     --theme-dark-toggle-text: 'dark';
-
-    --theme-bg: var(--theme-dark-bg);
-    --theme-bg-accent: var(--theme-dark-bg-accent);
-    --theme-fg: var(--theme-dark-fg);
-    --theme-fg-accent: var(--theme-dark-fg-accent);
-    --theme-text: var(--theme-dark-text);
-    --theme-link: var(--theme-dark-link);
-    --theme-h1: var(--theme-dark-h1);
-    --theme-h2: var(--theme-dark-h2);
-    --theme-h3: var(--theme-dark-h3);
-    --theme-switch-shadow: var(--theme-dark-switch-shadow);
-    --theme-toggle-text: var(--theme-dark-toggle-text);
 }
 
 @media screen and (prefers-color-scheme: light) {
@@ -61,12 +49,26 @@
         --theme-h1: var(--theme-dark-h1);
         --theme-h2: var(--theme-dark-h2);
         --theme-h3: var(--theme-dark-h3);
-        --theme-switch-shadow: var(--theme-dark-h3);
-        --theme-toggle-text: var(--theme-light-dark-text);
+        --theme-switch-shadow: var(--theme-dark-switch-shadow);
+        --theme-toggle-text: var(--theme-dark-toggle-text);
     }
 }
 
 @media screen and (prefers-color-scheme: dark) {
+    :root {
+        --theme-bg: var(--theme-dark-bg);
+        --theme-bg-accent: var(--theme-dark-bg-accent);
+        --theme-fg: var(--theme-dark-fg);
+        --theme-fg-accent: var(--theme-dark-fg-accent);
+        --theme-text: var(--theme-dark-text);
+        --theme-link: var(--theme-dark-link);
+        --theme-h1: var(--theme-dark-h1);
+        --theme-h2: var(--theme-dark-h2);
+        --theme-h3: var(--theme-dark-h3);
+        --theme-switch-shadow: var(--theme-dark-switch-shadow);
+        --theme-toggle-text: var(--theme-dark-toggle-text);
+    }
+
     .theme-toggle:checked~#themed {
         --theme-bg: var(--theme-light-bg);
         --theme-bg-accent: var(--theme-light-bg-accent);
@@ -77,7 +79,7 @@
         --theme-h1: var(--theme-light-h1);
         --theme-h2: var(--theme-light-h2);
         --theme-h3: var(--theme-light-h3);
-        --theme-switch-shadow: var(--theme-dark-h3);
+        --theme-switch-shadow: var(--theme-light-switch-shadow);
         --theme-toggle-text: var(--theme-light-toggle-text);
     }
 }
@@ -105,7 +107,6 @@
     background-color: var(--theme-bg);
     color: var(--theme-text);
     min-height: 100%;
-    /*transition: color .2s, background-color .2s;*/
 }
 
 nav {

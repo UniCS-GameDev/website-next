@@ -135,9 +135,21 @@ hr {
   justify-content: center;
 }
 
+.flex-cols {
+  flex-flow: row wrap;
+}
+
+.flex-rows {
+  flex-flow: column wrap;
+}
+
 .card {
   position: relative;
   padding: 0;
+}
+
+.card-interactive:hover > .card-content {
+  height: 100%;
 }
 
 .card-thumbnail {
@@ -159,14 +171,6 @@ hr {
 
 .card-content > .card-item {
   flex: 1 1 auto;
-}
-
-.flex-cols {
-  flex-flow: row wrap;
-}
-
-.flex-rows {
-  flex-flow: column wrap;
 }
 
 .responsive-image {

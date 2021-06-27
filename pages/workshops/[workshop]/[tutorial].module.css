@@ -2,13 +2,6 @@
     max-width: 640;
 }
 
-.tableOfContents {
-    max-width: 50em;
-    margin-left: auto;
-    margin-right: auto;
-    list-style: none;
-}
-
 .infopoint {
     size: 2em;
 }
@@ -179,7 +172,7 @@
 .completeButton {
     color: white;
     background-color: #008000;
-    border: none;
+    border: 2px solid #0c8f0c;
     padding: 1.2em;
     left: 50%;
     transform: translateX(-50%);
@@ -196,14 +189,12 @@
 }
 
 .completed {
-    border-color: #0c8f0c;
-    border-style: solid;
-    border-width: 2px;
+    border: 2px solid #0c8f0c;
     background: transparent;
     color:var(--theme-text);
 }
 
 .completed:hover {
-    background-color: #f1f1f1;
+    background-color: #0c8f0c;
     color: var(--theme-text);
 }
