@@ -2,7 +2,7 @@
     "title": "Workshop 01",
     "description": "",
     "thumbnail": "",
-    "videoUrl": "",
+    "videoUrl": "https://www.youtube.com/embed/hHnKQmjvsGQ",
     "tableOfContents": [
         "Some foundational C#",
         "Unity and Magic Methods",

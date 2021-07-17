@@ -2,7 +2,7 @@
     "title": "Workshop 00",
     "description": "",
     "thumbnail": "",
-    "videoUrl": "",
+    "videoUrl": "https://www.youtube.com/embed/OiIlgl5GsxY",
     "tableOfContents": [
         "Version Control Systems",
         "Setting up a Git Repository",
