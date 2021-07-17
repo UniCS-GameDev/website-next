@@ -85,6 +85,7 @@
 }
 
 .theme-toggle-label {
+    padding: 1em;
     cursor: pointer;
     display: flex;
 }
@@ -94,7 +95,6 @@
 }
 
 .theme-toggle-label::after {
-    align-self: center;
     color: var(--theme-switch-shadow);
     content: var(--theme-toggle-text);
 }
@@ -110,7 +110,12 @@
 }
 
 nav {
-    background: var(--theme-bg);
+    background: var(--theme-dark-bg);
+    color: var(--theme-dark-text);
+}
+
+nav a {
+    color: var(--theme-dark-text);
 }
 
 a {
