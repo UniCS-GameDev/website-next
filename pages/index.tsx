@@ -43,11 +43,11 @@ export default function Index({ members, defaultMemberPhotoSrc, partners, sponso
         <div id="about" className="container">
           <h2>About Us</h2>
           <p>
-            GameDev is the game development society of The University of
-            Manchester. We are a passionate and determined group of developers
-            who are curious to learn about the up and coming technologies within
-            the gaming industry and share what we learn with others. We do this
-            through our regular workshops and talks that anyone is able to
+            UniCS GameDev is the game development society of The University of
+            Manchester. Officially, we are part of the UniCS Computer Science Society. 
+            We are a passionate and determined group of developers who are curious to learn 
+            about the up and coming technologies within the gaming industry and share what we 
+            learn with others. We do this through our regular workshops and talks that anyone is able to
             attend. In addition to that, we also invite industry leaders to come
             and share their insights and ideas with our budding community. We
             also host an annual game-themed hackathon, called GameJam where
@@ -112,11 +112,11 @@ export default function Index({ members, defaultMemberPhotoSrc, partners, sponso
         <div id="contact" className="container">
           <div className="text-center">
             <h2>Contact Us</h2>
-            <p>Feel free to email us any inquiries that you may have!</p>
+            <p>Wanna sponsor us? Have a chat? We're one email away!</p>
           </div>
           <ul className="row">
-            <li><span>alexandru@unicsmcr.com</span></li>
-            <li><span>mikolaj@unicsmcr.com</span></li>
+            <li><span><a href="mailto:alexandru@unicsmcr.com">alexandru@unicsmcr.com</a></span></li>
+            <li><span><a href="mailto:mikolaj@unicsmcr.com">mikolaj@unicsmcr.com</a></span></li>
           </ul>
         </div>
         <div id="gallery">
