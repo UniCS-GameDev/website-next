@@ -11,7 +11,7 @@ export async function getStaticProps() {
   return {
     props: {
       sponsors: getAllSponsors(),
-      parteners: getAllPartners(),
+      partners: getAllPartners(),
     },
   };
 }
