@@ -34,12 +34,12 @@ export default function Sponsors({ partners }: IndexParams) {
       <h2>Partners:</h2>
       <div className={styles.eventTable}>
         {partners.map(({ name, description, photoSrc }, i) => (
-        <div key={i} className={styles.partnerCard}>
-          <img style={{ maxHeight: '200px' }} src={photoSrc} alt={name} />
-          <span style={{ padding: '3em', alignContent: 'center' }}>
-            {description}
-          </span>
-        </div>
+          <div key={i} className={styles.partnerCard}>
+            <img style={{ maxHeight: '200px' }} src={photoSrc} alt={name} />
+            <span style={{ padding: '3em', alignContent: 'center' }}>
+              {description}
+            </span>
+          </div>
         ))}
       </div>
       <div id="contact" className="container">
