@@ -49,6 +49,7 @@ export default function Layout({ title, description, children }: LayoutParams) {
                   &#9776;
                 </label>
               </li>
+              <li className="menu-link"><Link href="https://www.unicsmcr.com">UniCS</Link></li>
               <li className="menu-link"><Link href="/">GameDev</Link></li>
               <li className="menu-link"><Link href="/workshops">Workshops</Link></li>
               <li className="menu-link"><Link href="/events">Events</Link></li>
@@ -63,11 +64,12 @@ export default function Layout({ title, description, children }: LayoutParams) {
         <hr />
         <footer className="footer">
           <div className="text-center">
-            <a className="footer-icon" href="https://www.instagram.com/unics_gamedev/"><Instagram style={{ fontSize: '2em' }} /></a>
-            <a className="footer-icon" href="https://www.facebook.com/UniCsGameDev/"><Facebook style={{ fontSize: '2em' }} /></a>
-            <a className="footer-icon" href="https://gitlab.cs.man.ac.uk/unics-game-development/"><Gitlab style={{ fontSize: '2em' }} /></a>
+            <a className="footer-icon" href="https://www.instagram.com/unics_uom/"><Instagram style={{ fontSize: '2em' }} /></a>
+            <a className="footer-icon" href="https://www.facebook.com/unicsmanchester/"><Facebook style={{ fontSize: '2em' }} /></a>
+            <!--TODO: Change GitLab to GitHub icon, not sure how you do it-->
+            <a className="footer-icon" href="https://github.com/UniCS-GameDev/"><Gitlab style={{ fontSize: '2em' }} /></a>
             <br />
-            <span>UniCS GameDev © 2020</span>
+            <span>UniCS GameDev © 2021</span>
           </div>
         </footer>
       </div>
