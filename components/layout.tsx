@@ -41,17 +41,19 @@ export default function Layout({ title, description, children }: LayoutParams) {
       <input type="checkbox" className="hidden-input theme-toggle" id="theme-toggler" />
       <div id="themed">
         <header className="header">
-          <input type="checkbox" className="hidden-input nav-toggle" id="nav-toggler" />
-          <nav className="navbar" id="navbar">
-            <div>
-              <Link href="/">GameDev</Link>
-              <Link href="/workshops">Workshops</Link>
-              <Link href="/events">Events</Link>
-              <Link href="/sponsors">Sponsors</Link>
-              <label className="nav-toggle-label" htmlFor="nav-toggler">
-                &#9776;
-              </label>
-            </div>
+          <nav className="navbar flex-spaced">
+            <input type="checkbox" className="hidden-input menu-toggle" id="menu-toggler" />
+            <ul className="navbar-menu" id="menu">
+              <li>
+                <label className="menu-toggle-label" htmlFor="menu-toggler">
+                  &#9776;
+                </label>
+              </li>
+              <li className="menu-link"><Link href="/">GameDev</Link></li>
+              <li className="menu-link"><Link href="/workshops">Workshops</Link></li>
+              <li className="menu-link"><Link href="/events">Events</Link></li>
+              <li className="menu-link"><Link href="/sponsors">Sponsors</Link></li>
+            </ul>
             <label className="theme-toggle-label" htmlFor="theme-toggler" />
           </nav>
         </header>
