@@ -77,7 +77,7 @@ export default function Index({ members, defaultMemberPhotoSrc, partners, sponso
         <div id="sponsors" className="container">
           <h2>Our Sponsors and Partners</h2>
           <p className="text-center">
-            Interested in sponsoring us? <a href="#contact">Contact us</a> so 
+            Interested in sponsoring us? <a href="#contact">Contact us</a> so
             that we can arrange something!
           </p>
         </div>
