@@ -3,6 +3,7 @@ import Link from 'next/link';
 
 import type { IWorkshop } from '../lib/workshops';
 import { getAllWorkshops } from '../lib/workshops';
+
 import Layout from '../components/layout';
 
 import styles from './workshops.module.css';

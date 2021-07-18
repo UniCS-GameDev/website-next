@@ -4,6 +4,12 @@ export interface IPartner {
     photoSrc: string
 }
 
+export interface ISponsor {
+  rank: string,
+  description: string,
+  photoSrc: string
+}
+
 export function getAllPartners(): IPartner[] {
   return [
     {
@@ -12,12 +18,6 @@ export function getAllPartners(): IPartner[] {
       photoSrc: 'https://b-waterstudios.com/wp-content/uploads/2021/03/unity-logo-1230x690-2.jpg',
     },
   ];
-}
-
-export interface ISponsor {
-  rank: string,
-  description: string,
-  photoSrc: string
 }
 
 export function getAllSponsors(): ISponsor[] {

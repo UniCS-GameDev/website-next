@@ -33,9 +33,7 @@ function PlaceholderCard() {
   );
 }
 
-function EventCard({
-  title, description, datetime, location, url,
-}: IEvent) {
+function EventCard({ title, description, datetime, location, url }: IEvent) {
   return (
     <div className={styles.eventCardBox}>
       <h4>{title}</h4>
