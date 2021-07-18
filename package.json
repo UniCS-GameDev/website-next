@@ -1,6 +1,7 @@
 {
-  "name": "website-next",
-  "version": "0.1.0",
+  "name": "unics-gamedev-website",
+  "version": "1.0.0",
+  "license": "MIT",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -30,5 +31,12 @@
     "eslint-plugin-react": "^7.24.0",
     "eslint-plugin-react-hooks": "^4.2.0",
     "typescript": "^4.3.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/unics-gamedev/website-next.git"
+  },
+  "bugs": {
+    "url": "https://github.com/unics-gamedev/website-next/issues"
   }
 }
