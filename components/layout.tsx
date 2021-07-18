@@ -66,7 +66,6 @@ export default function Layout({ title, description, children }: LayoutParams) {
           <div className="text-center">
             <a className="footer-icon" href="https://www.instagram.com/unics_uom/"><Instagram style={{ fontSize: '2em' }} /></a>
             <a className="footer-icon" href="https://www.facebook.com/unicsmanchester/"><Facebook style={{ fontSize: '2em' }} /></a>
-            <!--TODO: Change GitLab to GitHub icon, not sure how you do it-->
             <a className="footer-icon" href="https://github.com/UniCS-GameDev/"><Gitlab style={{ fontSize: '2em' }} /></a>
             <br />
             <span>UniCS GameDev © 2021</span>
