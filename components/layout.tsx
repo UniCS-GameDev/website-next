@@ -52,7 +52,6 @@ export default function Layout({ title, description, children }: LayoutParams) {
               <li className="menu-link"><Link href="/">GameDev</Link></li>
               <li className="menu-link"><Link href="/workshops">Workshops</Link></li>
               <li className="menu-link"><Link href="/events">Events</Link></li>
-              <li className="menu-link"><Link href="/sponsors">Sponsors</Link></li>
             </ul>
             <label className="theme-toggle-label" htmlFor="theme-toggler" />
           </nav>

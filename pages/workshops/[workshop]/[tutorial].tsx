@@ -6,11 +6,9 @@ import csharp from 'highlight.js/lib/languages/csharp';
 
 import micromark from 'micromark';
 
-import type {
-  IStep, IHead, IInfo, ITutorial,
-} from '../../../lib/workshops';
-
+import type { IStep, IHead, IInfo, ITutorial } from '../../../lib/workshops';
 import { getAllWorkshops, getAllTutorials } from '../../../lib/workshops';
+
 import Layout from '../../../components/layout';
 
 import styles from './[tutorial].module.css';
@@ -99,8 +97,8 @@ function StepBlock({ title, body }: IStep, isCompletable?: boolean) {
     <div id={formatStepId(title)}>
       <h3>{title}</h3>
       <div className="text-break" dangerouslySetInnerHTML={{ __html: markdown(body) }} />
-      {isCompletable
-            && <button type="button" id={`${title}button`} onClick={() => handleStep(title)} className={styles.completeButton}>Mark step as completed</button>}
+      {isCompletable &&
+      <button type="button" id={`${title}button`} onClick={() => handleStep(title)} className={styles.completeButton}>Mark step as completed</button>}
     </div>
   );
 }
@@ -153,9 +151,7 @@ function ProgressNav({ tableOfContents }: ProgressNavParams) {
   );
 }
 
-export default function Tutorial({
-  slug, created, edited, details,
-}: ITutorial) {
+export default function Tutorial({ slug, created, edited, details }: ITutorial) {
   const [windowSize, setWindowSize] = useState({ width: undefined });
 
   useEffect(() => {
@@ -183,25 +179,15 @@ export default function Tutorial({
       <div className="container">
         <h1>{details.title}</h1>
         <div className="text-center">
-          <span>
-            Created:
-            {created}
-          </span>
-          {' - '}
-          <span>
-            Edited:
-            {edited}
-          </span>
+          <span>Created:{' '}{created}</span>{' - '}<span>Edited:{' '}{edited}</span>
         </div>
-        {details.videoUrl
-          && (
-          <div>
-            <h2>Video</h2>
-            <div style={{ textAlign: 'center' }}>
-              <iframe title="test" className={styles.video} src={details.videoUrl} frameBorder="0" allowFullScreen />
-            </div>
+        {details.videoUrl &&
+        <div>
+          <h2>Video</h2>
+          <div style={{ textAlign: 'center' }}>
+            <iframe title="test" className={styles.video} src={details.videoUrl} frameBorder="0" allowFullScreen />
           </div>
-          )}
+        </div>}
       </div>
       {ProgressNav(details)}
       <hr />

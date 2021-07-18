@@ -1,16 +1,10 @@
-export interface Partner {
+export interface IPartner {
     name: string,
     description: string,
     photoSrc: string
 }
-export interface Sponsor {
-    rank: string,
-    description: string,
-    photoSrc: string
-}
-export const defaultMemberPhoto = '/images/default_profile.svg';
 
-export function getAllPartners(): Partner[] {
+export function getAllPartners(): IPartner[] {
   return [
     {
       name: 'Unity',
@@ -19,6 +13,13 @@ export function getAllPartners(): Partner[] {
     },
   ];
 }
-export function getAllSponsors(): Sponsor[] {
+
+export interface ISponsor {
+  rank: string,
+  description: string,
+  photoSrc: string
+}
+
+export function getAllSponsors(): ISponsor[] {
   return [];
 }

@@ -6,3 +6,30 @@
 .galleryPhoto {
     max-width: 512px;
 }
+
+.banner {
+    width: 100%;
+    height: fit-content;
+    padding-bottom: 4em;
+}
+
+.eventTable {
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+    justify-content: center;
+}
+
+.partnerCard {
+    width: 100%;
+    height: fit-content;
+    padding: 1em;
+    display: flex;
+    flex-direction: row;
+}
+
+@media only screen and (max-width: 700px) {
+    .partnerCard {
+        flex-direction: column;
+    }
+}

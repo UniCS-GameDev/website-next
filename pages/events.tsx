@@ -1,7 +1,9 @@
 import React from 'react';
 import Link from 'next/link';
 
-import { IEvent, getHistoricalEvents, getUpcomingEvents } from '../lib/events';
+import type { IEvent } from '../lib/events';
+import { getHistoricalEvents, getUpcomingEvents } from '../lib/events';
+
 import { Clock, Facebook, Location } from '../components/icons';
 import Layout from '../components/layout';
 
@@ -39,23 +41,11 @@ function EventCard({
       <h4>{title}</h4>
       <p>{description}</p>
       <div className={styles.eventSpecs}>
-        <span>
-          <Clock />
-          {' '}
-          {datetime}
-        </span>
+        <span><Clock />{' '}{datetime}</span>
         {' | '}
-        <span>
-          <Location />
-          {' '}
-          {location}
-        </span>
+        <span><Location />{' '}{location}</span>
         {' | '}
-        <span>
-          <Facebook />
-          {' '}
-          <Link href={url ?? '#'}>Event Announcement</Link>
-        </span>
+        <span><Facebook />{' '}<Link href={url ?? '#'}>Event Announcement</Link></span>
       </div>
     </div>
   );
