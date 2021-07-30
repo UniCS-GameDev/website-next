@@ -7,8 +7,8 @@ import { defaultMemberPhoto, getAllMembers } from '../lib/members';
 import type { IPhoto } from '../lib/gallery';
 import getAllGalleryPhotos from '../lib/gallery';
 
-import type { IPartner, ISponsor } from '../lib/sponsors';
-import { getAllPartners, getAllSponsors } from '../lib/sponsors';
+import type { ISponsor } from '../lib/sponsors';
+import { getAllSponsors } from '../lib/sponsors';
 
 import Layout from '../components/layout';
 
@@ -21,22 +21,33 @@ export async function getStaticProps() {
     props: {
       members: getAllMembers(),
       defaultMemberPhotoSrc: defaultMemberPhoto,
-      partners: getAllPartners(),
       sponsors: getAllSponsors(),
       gallery: getAllGalleryPhotos(),
     },
   };
 }
 
+function SponsorCard({ name, description, photoSrc, rank }: ISponsor, i: number) {
+  return (
+    <div key={i} className={styles.partner}>
+      <img className={`d-none d-lg-block d-xl-block responsive-image ${styles.partnerThumbnail}`} src={photoSrc} alt={name} />
+      <div>
+        {name}{' - '}<span>{rank ?? 'Partner'}</span>
+        <hr />
+        {description}
+      </div>
+    </div>
+  );
+}
+
 interface IndexParams {
   members: IMember[],
   defaultMemberPhotoSrc: string,
-  partners: IPartner[],
   sponsors: ISponsor[],
   gallery: IPhoto[]
 }
 
-export default function Index({ members, defaultMemberPhotoSrc, partners, sponsors, gallery }: IndexParams) {
+export default function Index({ members, defaultMemberPhotoSrc, sponsors, gallery }: IndexParams) {
   return (
     <Layout>
       <div>
@@ -81,38 +92,17 @@ export default function Index({ members, defaultMemberPhotoSrc, partners, sponso
             that we can arrange something!
           </p>
         </div>
-        {partners.length > 0 &&
-        <div>
-          <h3>Partners:</h3>
-          <div className={styles.eventTable}>
-            {partners.map(({ name, description, photoSrc }, i) => (
-              <div key={i} className={styles.partnerCard}>
-                <img style={{ maxHeight: '200px' }} src={photoSrc} alt={name} />
-                <span style={{ padding: '3em', alignContent: 'center' }}>
-                  {description}
-                </span>
-              </div>
-            ))}
-          </div>
-        </div>}
         {sponsors.length > 0 &&
-        <div>
-          <h3>Sponsors:</h3>
+        <div className="container">
+          <h3>Partners and Sponsors:</h3>
           <div className={styles.eventTable}>
-            {sponsors.map(({ rank, description, photoSrc }, i) => (
-              <div key={i} className={styles.partnerCard}>
-                <img style={{ maxHeight: '200px' }} src={photoSrc} alt={rank} />
-                <span style={{ padding: '3em', alignContent: 'center' }}>
-                  {description}
-                </span>
-              </div>
-            ))}
+            {sponsors.map(SponsorCard)}
           </div>
         </div>}
         <div id="contact" className="container">
           <div className="text-center">
             <h2>Contact Us</h2>
-            <p>Wanna sponsor us? Have a chat? We're one email away!</p>
+            <p>Wanna sponsor us? Have a chat? We are one email away!</p>
           </div>
           <ul className="row">
             <li><span><a href="mailto:alexandru@unicsmcr.com">alexandru@unicsmcr.com</a></span></li>
