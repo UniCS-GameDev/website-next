@@ -46,13 +46,13 @@ export default function Layout({ title, description, children }: LayoutParams) {
             <ul className="navbar-menu" id="menu">
               <li>
                 <label className="menu-toggle-label" htmlFor="menu-toggler">
-                  &#9776;
+                  <img className="menu-toggle-icon" src="/menu.svg" alt="menu" />
                 </label>
               </li>
-              <li className="menu-link"><Link href="https://www.unicsmcr.com">UniCS</Link></li>
-              <li className="menu-link"><Link href="/">GameDev</Link></li>
-              <li className="menu-link"><Link href="/workshops">Workshops</Link></li>
-              <li className="menu-link"><Link href="/events">Events</Link></li>
+              <Link href="https://www.unicsmcr.com" passHref><li className="menu-link">UniCS</li></Link>
+              <Link href="/" passHref><li className="menu-link">GameDev</li></Link>
+              <Link href="/workshops" passHref><li className="menu-link">Workshops</li></Link>
+              <Link href="/events" passHref><li className="menu-link">Events</li></Link>
             </ul>
             <label className="theme-toggle-label" htmlFor="theme-toggler" />
           </nav>
