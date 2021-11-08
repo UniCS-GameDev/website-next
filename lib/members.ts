@@ -13,10 +13,5 @@ export function getAllMembers(): IMember[] {
       position: 'Co-Director',
       photoSrc: 'https://res.cloudinary.com/gamedev-unicsmcr/image/upload/v1609274544/12H-12_-_Alexandru_Constantin_cvvdc0.jpg',
     },
-    {
-      name: 'Mikolaj Lenczewski',
-      position: 'Co-Director',
-      photoSrc: 'https://res.cloudinary.com/gamedev-unicsmcr/image/upload/v1626540010/20201209_124138_g8f546.jpg',
-    },
   ];
 }
